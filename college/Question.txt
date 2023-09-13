@@ -1,0 +1,115 @@
+Create a class College with below attributes
+id-int
+nam-string
+contactNo-int
+address-String
+pincode-int
+
+Write getters, setters and parameterized constructor in the above mentioned attribute sequence as required.
+Create class Solution with main method
+
+Implement two static methods-
+findCollegeWithMaximumPincode 
+searchCollegeByAddress
+
+findCollegeWithMaximumPincode
+create a static method
+findCollegeWithMaximumPincode in the Solution class. This method will take array of College objects and returns the College object having the maximum pincode if 
+found else return null if not found.
+
+searchCollegeByAddress
+create a static method
+searchCollegeByAddress in the Solution class. This method will take array of College objects and returns the College object having the mentioned Address if 
+found else return null if not found.
+
+This method should be called from main method.
+Write code to perform following tasks:
+1. Take necessary input variable and call findCollegeWithMaximumPincode. For this method - The main method should print the College object with maximum of mentioned 
+attribute as if it is returned value is not null, or it should print "No College found with mentioned attribute".
+
+2. Take necessary input variable and call searchCollegeByAddress. For this method - The main method should print the College object details as if it is returned value 
+
+is not null, or it should print "No College found with mentioned attribute".
+
+Consider below sample input and output to test your code.	
+
+Input 1
+
+4
+109
+ACT
+2500256
+mumbai
+695001
+107
+MCE
+2500254
+malapuram
+612354
+113
+CTE
+2500252
+chennai
+623145
+103
+SCT
+2500255
+AP
+523641
+AP
+
+Output 1
+id-109
+name-ACT
+contactNo-2500256
+address-mumbai
+pincode-695001
+id-102
+name-sct
+contact-2500255
+address-AP
+pincode-523641
+
+
+Input 2
+4
+111
+MJT
+2500251
+Calicut
+401235
+105
+MET
+2500256
+kochi
+668745
+115
+IIT
+2500262
+banglore
+569874
+110
+ACT
+2500263
+delhi
+687945
+delhi
+
+Output 2
+id-110
+name-ACT
+contactNo-2500263
+address-delhi
+pincode-687945
+id-110
+name-ACT
+contactNo-2500263
+address-delhi
+pincode-687945
+
+
+
+
+
+
+
