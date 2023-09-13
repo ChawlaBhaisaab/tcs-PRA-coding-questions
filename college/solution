@@ -1,0 +1,91 @@
+import java.util.*;
+public class College {
+	private int id;
+	private String nam;
+	private int contactNo;
+	private String address;
+	private int pincode;
+	
+	public College(int id,String nam,int contactNo,String address,int pincode) {
+		this.id=id;
+		this.nam=nam;
+		this.contactNo=contactNo;
+		this.address=address;
+		this.pincode=pincode;
+	}
+	public int getid() {return id ;}
+	public String getnam() {return nam;}
+	public int getcontactNo() {return contactNo;}
+	public String getaddress() {return address;}
+	public int getpincode() {return pincode;}
+}
+public class Solution {
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		College[] arr=new College[4];
+		for(int i=0;i<arr.length;i++) {
+		int id=sc.nextInt();
+		sc.nextLine();
+		String nam=sc.nextLine();
+		int contactNo=sc.nextInt();
+		sc.nextLine();
+		String address=sc.nextLine();
+		int pincode=sc.nextInt();
+		sc.nextLine();
+		arr[i]=new College(id,nam,contactNo,address,pincode);
+		}
+		String a=sc.nextLine();
+		
+		College ans=findCollegeWithMaximumPincode(arr);
+		if(ans==null) {
+			System.out.println("No College found with mentioned attribute.");
+		}
+		else {
+			System.out.println("id-"+ans.getid());
+	        System.out.println("name-"+ans.getnam());
+	        System.out.println("contactNo-"+ans.getcontactNo());
+	        System.out.println("address-"+ans.getaddress());
+	        System.out.println("pincode-"+ans.getpincode());
+		}
+		
+		College ans1=searchCollegeByAddress(arr,a);
+        if(ans1!=null)
+        {
+            System.out.println("id-"+ans1.getid());
+            System.out.println("name-"+ans1.getnam());
+            System.out.println("contactNo-"+ans1.getcontactNo());
+            System.out.println("address-"+ans1.getaddress());
+            System.out.println("pincode-"+ans1.getpincode());
+        }
+        else
+        {
+            System.out.println("No College found with mentioned attribute.");
+        }
+
+
+	}
+	public static College findCollegeWithMaximumPincode(College[] arr) {
+		int max=0;
+		College m=null;
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i].getpincode()>max) {
+				max=arr[i].getpincode();
+				m=arr[i];
+			}	
+		}
+		if(m==null) {return null;}
+		else {return m;}
+	}
+	
+	public static College searchCollegeByAddress(College[] arr, String a) {
+		College m=null;
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i].getaddress().equalsIgnoreCase(a)) {
+				m=arr[i];
+			}
+		}
+		if(m==null) {return null;}
+		else {return m;}
+	}
+
+}
