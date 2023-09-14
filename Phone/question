@@ -1,0 +1,55 @@
+Create a class Phone with below attributes
+int phoneId
+String os
+String brand
+int price
+Write getters, setters and parameterized constructor in the above mentioned attribute sequence as required.
+Create class Solution with main method
+
+Implement two static methods-
+findPriceForGivenBrand
+getPhoneBasedOnOs
+
+findPriceForGivenBrand in the solution class. This method will take array of Phone objects, String brand and returns price If the phone brand matches with String 
+brand, if found else return 0 if not found.
+
+getPhoneBasedOnOs in the Solution class. This method will take array of Phone objects and String os and returns the phone object. If phone os matches with String os, 
+if found else return null if not found.
+
+This method should be called from main method.
+Write code to perform following tasks:
+1. Take necessary input variable and call findPriceForGivenBrand For this method- The main method should print the price for given brand. As if the returned value is 
+not 0, or it should print "The given Brand is not available ".
+
+2. Take necessary input variable and call getPhoneBasedOnOs. For this method- The main method should print the id of return phone object as it is if the returned value 
+is not null, or it should print "No phones are available with specified os ”.
+
+Note- All the searches should be case insensitive. Before calling these static methods in main, use Scanner object to read the values of four Phone objects referring 
+attributes in the above mentioned attribute sequence. Next, read the value for brand and os.
+
+Consider below sample input and output to test your code.	
+
+Input 
+4
+111
+iOS
+Apple
+30000
+222
+android
+Samsung
+50000
+333
+Symbian
+HTC
+12000
+444
+Paranoid
+HTC
+89000
+Blackberry
+aNdRoid
+
+Output
+The given Brand is not available
+222
