@@ -1,0 +1,59 @@
+Create a class Car with below attributes
+int carId
+int topSpeed
+double milesTravelled
+String brand
+Write getters, setters and parameterized constructor in the above mentioned attribute sequence as required.
+Create class Solution with main method
+
+Implement two static methods-
+countCarsByBrand 
+getSecondLowestMilesTravelledCar
+
+countCarsByBrand
+countCarsByBrand in the solution class. This method will take array of Cars objects, String brand and returns the total number of car with brand name if found else 
+return 0 if not found.
+
+getSecondLowestMilesTravelledCar
+getSecondLowestMilesTravelledCar in the Solution class. This method will take array of Cars objects and miles and returns the Car object having the second lowest 
+miles travelled whose travelled miles is more than miles input, if found else return null if not found.
+
+This method should be called from main method.
+Write code to perform following tasks:
+1. Take necessary input variable and call countCarsByBrand. For this method- The main method should print the total number of cars having the brand same. As if the
+returned value is no 0, or it should print "No such car found ".
+
+2. Take necessary input variable and call getSecondLowestMilesTravelledCar . For this method- The main method should print the Car object details as it is if the 
+returned value us not null, or it should print "No such car found ".
+
+
+
+Consider below sample input and output to test your code.	
+
+Input 
+4
+1001
+200
+2000
+Audi
+1002
+134
+3000
+Maserati
+1003
+180
+5500
+Audi
+1004
+205
+6000
+Ferrari
+Audi
+5000
+
+Ouput 
+2
+carId-1003
+topSpeed-180
+milesTravelled-5500.0
+brand-Audi
