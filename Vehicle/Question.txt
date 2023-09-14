@@ -1,0 +1,82 @@
+Create a class Vehicle with below attributes
+number-int
+String-name
+price-double
+
+Write getters, setters and parameterized constructor in the above mentioned attribute sequence as required.
+Create class Solution with main method
+
+Implement two static methods-
+
+findVehicleByMinimumPrice 
+searchVehicleByName
+
+findVehicleByMinimumPrice 
+create a static method
+findVehicleByMinimumPrice in the solution class. This method will take array of Vehicle objects and returns the Vehicle objects having the minimum price if found else 
+return null if not found.
+
+searchVehicleByName
+create a static method
+searchVehicleByName in the Solution class. This method will take array of Vehicle objects and returns the Vehicle objects having the mentioned name if found else 
+return null if not found.
+
+This method should be called from main method.
+Write code to perform following tasks:
+1. Take necessary input variable and call findVehicleByMinimumPrice. For this method- The main method should print the Vehicle object with minimum of mentioned 
+attribute as it is if the returned value us not null, or it should print "No Vehicle found with mentioned attribute".
+
+2. Take necessary input variable and call searchVehicleByName. For this method- The main method should print the Vehicle object details as it is if the returned value 
+us not null, or it should print "No Vehicle found with mentioned attribute".
+
+
+Consider below sample input and output to test your code.	
+
+Input 1
+
+4
+3111
+bus
+1000.0
+4112
+crane
+1800.0
+5114 
+tractor
+2400.0
+6115
+Scooter
+2700.0
+Scooter
+
+Ouput 1
+number-3111
+name-bus
+price-1000.0
+number-6115
+name-scooter
+price-2700.0
+Input 2
+
+4
+1109
+Train
+2000.0
+5104
+taxi
+2800.0
+4112
+bike
+5600.0
+8107
+Scooter
+3300.0
+bike
+
+Output 2
+number-1109
+name-Train
+price-2000.0
+number-4112
+name-bike
+price-5600.0
