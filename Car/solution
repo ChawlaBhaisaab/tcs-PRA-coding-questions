@@ -1,0 +1,82 @@
+import java.util.*;
+public class Car {
+private int carId;
+private int topSpeed;
+private double milesTravelled;
+private String brand;
+
+public int getcarId() {return carId;}
+public int gettopSpeed() {return topSpeed;}
+public double getmilesTravelled() {return milesTravelled;}
+public String getbrand() {return brand;}
+
+Car(int carId,int topSpeed,double milesTravelled,String brand){
+	this.carId=carId;
+	this.topSpeed=topSpeed;
+	this.milesTravelled=milesTravelled;
+	this.brand=brand;
+}
+}
+public class Solution {
+public static void main(String args[]) {
+	Scanner sc = new Scanner(System.in);
+	int a=sc.nextInt();
+	Car[] arr= new Car[a];
+	for(int i=0;i<arr.length;i++) {
+		int carId=sc.nextInt();
+		int topSpeed=sc.nextInt();
+		double milesTravelled=sc.nextDouble();
+		sc.nextLine();
+		String brand=sc.nextLine();
+		arr[i]=new Car(carId,topSpeed,milesTravelled,brand);
+	}
+	String b=sc.nextLine();
+	double c=sc.nextDouble();
+	int ans=countCarsByBrand(arr,b);
+	if(ans==0) {
+		System.out.println("No such car found");
+	}
+	else {
+		System.out.println(ans);
+	}
+	
+	Car ans1=getSecondLowestMilesTravelledCar(arr,c);
+	if(ans1==null) {
+		System.out.println("No such car found");
+	}
+	else {
+		System.out.println("carId-"+ans1.getcarId());
+		System.out.println("topSpeed-"+ans1.gettopSpeed());
+		System.out.println("milesTravelled-"+ans1.getmilesTravelled());
+		System.out.println("brand-"+ans1.getbrand());
+	}
+}
+public static int countCarsByBrand(Car[] arr, String b) {
+	int count=0;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getbrand().equalsIgnoreCase(b)) {
+			count++;
+		}
+	}
+	if(count==0) {return 0;}
+	else {return count;}
+}
+public static Car getSecondLowestMilesTravelledCar(Car[] arr,double c) {
+	Car m=null;
+	double max=Double.MIN_VALUE;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getmilesTravelled()>max && arr[i].getmilesTravelled()>c) {
+			max=arr[i].getmilesTravelled();
+		}
+	}
+	double smin=Double.MAX_VALUE;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getmilesTravelled() < smin  && arr[i].getmilesTravelled()<max && arr[i].getmilesTravelled()>c) {
+			smin=arr[i].getmilesTravelled();
+			m=arr[i];
+		}
+	}
+	if(m==null) {return null;}
+	else {return m;}
+}
+}
