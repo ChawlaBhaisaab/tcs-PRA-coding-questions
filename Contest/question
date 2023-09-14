@@ -1,0 +1,59 @@
+Create a class Contest with below attributes
+int contestId
+String contestName
+String contestWinner
+int points
+String category
+Write getters, setters and parameterized constructor in the above mentioned attribute sequence as required.
+Create class Solution with main method
+
+Implement two static methods-
+findTotalPointsBasedOnWinner
+getContestWithSecondHighestPoints
+
+findTotalPointsBasedOnWinner in the solution class. This method will take array of Contest objects, String contestWinner and returns the total 
+number of points which matches with contestWinner if found else return 0 if not found.
+
+getContestWithSecondHighestPoints in the Solution class. This method will take array of Contest objects and String category and returns the 
+Contest object having the second highest points for the given category, if found else return null if not found.
+
+This method should be called from main method.
+Write code to perform following tasks:
+1. Take necessary input variable and call findTotalPointsBasedOnWinner. For this method- The main method should print the total number of points 
+for given winner. As if the returned value is no 0, or it should print "There is no matching contest".
+
+2. Take necessary input variable and call getContestWithSecondHighestPoints. For this method- The main method should print the Contest object 
+points as it is if the returned value us not null, or it should print "There is no matching contest.”.
+
+
+
+Consider below sample input and output to test your code.	
+
+Input 
+4
+101
+ABC
+John
+90
+Science
+102
+CDE
+Patrick
+80
+Maths
+103
+XYZ
+John
+80
+Economics
+104
+PQR
+Alex
+100
+Science
+John
+Science
+
+Output
+170
+90
