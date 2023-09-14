@@ -1,0 +1,84 @@
+import java.util.*;
+public class Contest {
+ private int contestId;
+ private String contestName;
+ private String contestWinner;
+ private int points;
+ private String category;
+ 
+ public int getcontestId() {return contestId;}
+ public String getcontestName() {return contestName;}
+ public String getcontestWinner() {return contestWinner;}
+ public int getpoints() {return points;}
+ public String getcategory() {return category;}
+ 
+ Contest(int contestId,String contestName,String contestWinner,int points,String category){
+	 this.contestId=contestId;
+	 this.contestName=contestName;
+	 this.contestWinner=contestWinner;
+	 this.points=points;
+	 this.category=category;
+	 
+ }
+ 
+}
+public class Solution {
+public static void main(String args[]) {
+	Scanner sc=new Scanner(System.in);
+	int a=sc.nextInt();
+	Contest [] arr=new Contest[a];
+	for(int i=0;i<arr.length;i++) {
+		int contestId=sc.nextInt();
+		sc.nextLine();
+		String contestName=sc.nextLine();
+		String contestWinner=sc.nextLine();
+		int points=sc.nextInt();
+		sc.nextLine();
+		String category=sc.nextLine();
+		arr[i]=new Contest(contestId,contestName,contestWinner,points,category);
+	}
+	String b=sc.nextLine();
+	String c=sc.nextLine();
+	int ans=findTotalPointsBasedOnWinner(arr,b);
+	if(ans==0) {
+		System.out.println("There is no matching contest");
+	}
+	else {System.out.println(ans);}
+	
+	Contest ans1=getContestWithSecondHighestPoints(arr,c);
+	if(ans1==null) {
+		System.out.println("There is no matching contest");
+	}
+	else {
+		System.out.println(ans1.getpoints());
+	}
+}
+public static int findTotalPointsBasedOnWinner(Contest [] arr,String b) {
+	int count=0;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getcontestWinner().equalsIgnoreCase(b)) {
+			count+=arr[i].getpoints();
+		}
+	}
+	if(count==0) {return 0;}
+	else {return count;}
+}
+public static Contest getContestWithSecondHighestPoints(Contest [] arr,String c) {
+  int max=Integer.MIN_VALUE;
+  Contest m=null;
+  for(int i=0;i<arr.length;i++) {
+	  if(arr[i].getpoints()>max && arr[i].getcategory().equalsIgnoreCase(c)) {
+		  max=arr[i].getpoints();
+	  }
+  }
+  int smax=Integer.MIN_VALUE;
+  for (int i=0;i<arr.length;i++) {
+	  if(arr[i].getpoints()>smax && arr[i].getcategory().equalsIgnoreCase(c) && arr[i].getpoints()<max) {
+		  smax=arr[i].getpoints();
+		  m=arr[i];
+	  }
+  }
+  if(m==null) {return null;}
+  else {return m;}
+}
+}
