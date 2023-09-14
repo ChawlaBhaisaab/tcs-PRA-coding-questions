@@ -1,0 +1,70 @@
+import java.util.*;
+public class Phone {
+private int phoneId;
+private String os;
+private String brand;
+private int price;
+
+
+public int getphoneId() {return phoneId;}
+public String getos() {return os;}
+public String getbrand() {return brand;}
+public int getprice() {return price;}
+
+Phone(int phoneId,String os,String brand,int price){
+	this.phoneId=phoneId;
+	this.os=os;
+	this.brand=brand;
+	this.price=price;
+}
+}
+public class Solution {
+public static void main(String args[]) {
+	Scanner sc=new Scanner(System.in);
+	int a=sc.nextInt();
+	Phone[] arr=new Phone[a];
+	for(int i=0;i<arr.length;i++) {
+		int phoneId=sc.nextInt();
+		sc.nextLine();
+		String os=sc.nextLine();
+		String brand=sc.nextLine();
+		int price=sc.nextInt();
+		arr[i]=new Phone(phoneId,os,brand,price);
+	}
+	sc.nextLine();
+	String b=sc.nextLine();
+	String c=sc.nextLine();
+	int ans=findPriceForGivenBrand(arr,b);
+	if(ans==0) {
+		System.out.println("The given Brand is not available");
+	}
+	else {
+		System.out.println(ans);
+	}
+	Phone ans1=getPhoneBasedOnOs(arr,c);
+	if(ans1==null) {
+		System.out.println("No phones are available with specified os");
+	}
+	else {
+		System.out.println(ans1.getphoneId());
+	}
+}
+public static int findPriceForGivenBrand(Phone[] arr,String b) {
+	int p=0;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getbrand().equalsIgnoreCase(b)) {
+			p=arr[i].getprice();
+		}
+	}
+	return p;
+}
+public static Phone getPhoneBasedOnOs(Phone[] arr, String c) {
+	Phone m=null;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getos().equalsIgnoreCase(c)){
+			m=arr[i];
+		}
+	}
+	return m;
+}
+}
