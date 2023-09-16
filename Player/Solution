@@ -1,0 +1,90 @@
+import java.util.*;
+public class Player {
+private int playerId;
+private String playerName;
+private int runs;
+private String playerType;
+private String matchType;
+
+public int getplayerId() {return playerId;}
+public String getplayerName() {return playerName;}
+public int getruns() {return runs;}
+public String getplayerType() {return playerType;}
+public String getmatchType() {return matchType;}
+
+Player(int playerId,String playerName,int runs,String playerType,String matchType){
+	this.playerId=playerId;
+	this.playerName=playerName;
+	this.runs=runs;
+	this.playerType=playerType;
+	this.matchType=matchType;
+}
+}
+public class Solution {
+	public static void main (String args[]) {
+Scanner sc=new Scanner(System.in);
+Player[] arr=new Player[4];
+for (int i=0;i<arr.length;i++) {
+	int playerId=sc.nextInt();
+	sc.nextLine();
+	String playerName=sc.nextLine();
+	int runs=sc.nextInt();
+	sc.nextLine();
+	String playerType=sc.nextLine();
+	String matchType=sc.nextLine();
+	arr[i]=new Player(playerId,playerName,runs,playerType,matchType);
+}
+String a=sc.nextLine();
+String b=sc.nextLine();
+
+int ans=findPlayerWithLowestRuns(arr,a);
+if(ans==Integer.MAX_VALUE) {
+	System.out.println("No such player");
+}
+else {
+	System.out.println(ans);
+}
+
+Player[] ans1=findPlayerByMatchType(arr,b);
+if(ans1==null) {
+	System.out.println("No Player with given match Type");
+}
+else {
+	for(int i=0;i<ans1.length;i++) {
+		System.out.println(ans1[i].getplayerId());
+	}
+}
+}
+	
+public static int findPlayerWithLowestRuns(Player[] arr,String a) {
+	int min=Integer.MAX_VALUE;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getplayerType().equalsIgnoreCase(a)) {
+			if(min>arr[i].getruns()) {
+				min=arr[i].getruns();
+			}
+		}
+	}
+	return min;
+}
+
+public static Player[] findPlayerByMatchType(Player[] arr,String b) {
+	Player[] res=new Player[0];
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getmatchType().equalsIgnoreCase(b)) {
+			res=Arrays.copyOf(res, res.length+1);
+			res[res.length-1]=arr[i];
+		}
+	}
+	for(int i=0;i<res.length-1;i++) {
+		for(int j=0;j<res.length-i-1;j++) {
+			if(res[j].getplayerId()<res[j+1].getplayerId()) {
+				Player temp=res[j];
+				res[j]=res[j+1];
+				res[j+1]=temp;
+			}
+		}
+	}
+	return res;
+}
+}
