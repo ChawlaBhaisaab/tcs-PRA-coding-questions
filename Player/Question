@@ -1,0 +1,58 @@
+Create a class Player with below attributes
+int playerId
+String playerlName
+Int runs
+String playerType
+String matchType
+Write getters, setters and parameterized constructor in the above mentioned attribute sequence as required.
+
+Create class Solution with main method
+Implement two static methods in Solution class-
+findPlayerWithLowestRuns in the solution class. This method will take array of Player objects, String playerType and returns least runs of the player. If the 
+playerType of any Player object matches with String playerType, if found else return 0 if not found.
+
+findPlayerByMatchType in the Solution class. This method will take array of Player objects and String matchType  and returns the array of Player objects in 
+descending order of their playerId. For player objects which have matchType  equal to String matchType  input. If found else return null if not found.
+
+This method should be called from main method.
+Write code to perform following tasks:
+1. Take necessary input variable and call findPlayerWithLowestRuns. For this method- The main method should print the returned runs. As if the returned value is not 0,
+or it should print "No such player."
+2. Take necessary input variable and call findPlayerByMatchType. For this method- The main method should print the playerId from return objects array. As it is if
+the returned value is not null, or it should print "No Player with given match Type.”
+
+Before calling these static methods in main, use Scanner object to read the values of four Player objects referring attributes in the above mentioned
+Attribute sequence.
+Next read the value for string playerType and String matchType
+All searches should be case insensitive.
+
+Consider below sample input and output to test your code.	
+Input 
+
+11
+Sachin
+100
+International
+One day
+12
+Shewag
+133
+International
+Test
+13
+Varun
+78
+State
+Test
+14
+Ashwin
+67
+State
+One day
+State
+One day
+
+Output-
+67
+14
+11
