@@ -1,0 +1,57 @@
+import java.util.*;
+public class Fruits {
+private int fruitId;
+private String fruitName;
+private int price;
+private int rating;
+
+public int getfruitId() {return fruitId;}
+public String getfruitName() {return fruitName;}
+public int getprice() {return price;}
+public int getrating() {return rating;}
+
+Fruits(int fruitId,String fruitName,int price,int rating){
+	this.fruitId=fruitId;
+	this.fruitName=fruitName;
+	this.price=price;
+	this.rating=rating;
+}
+}
+public class Solution {
+public static void main(String args[]) {
+	Scanner sc=new Scanner(System.in);
+	Fruits [] arr= new Fruits [4];
+	for (int i=0;i<arr.length;i++) {
+		int fruitId=sc.nextInt();
+		sc.nextLine();
+		String fruitName=sc.nextLine();
+		int price=sc.nextInt();
+		int rating=sc.nextInt();
+		arr[i]=new Fruits(fruitId,fruitName,price,rating);
+		
+	}
+	int a=sc.nextInt();
+	Fruits ans= findMaximumPriceByRating(arr,a);
+	if(ans==null) {
+		System.out.println("No such Fruit");
+	}
+	else {
+		System.out.println(ans.getfruitId());
+	}
+	
+}
+
+public static Fruits findMaximumPriceByRating(Fruits[] arr,int a) {
+	Fruits m=null;
+	int price=Integer.MIN_VALUE;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getrating()>a) {
+			if(arr[i].getprice()>price) {
+				price=arr[i].getprice();
+				m=arr[i];
+			}
+		}
+	}
+	return m;
+}
+}
