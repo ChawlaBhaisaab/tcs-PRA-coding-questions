@@ -1,0 +1,57 @@
+Create a class Mobile with below attributes 
+int mobileId
+String modelName
+int price
+String brand
+Write getters, setters and parameterized constructor in the above mentioned attribute sequence as required.
+Create class Solution with main method
+
+Implement two static methods-
+countMobileByBrand
+getSecondHighestPrice
+
+countMobileByBrand in the solution class. This method will take array of Mobile objects, String brand and returns total number of mobile. If the mobile brand matches
+with String brand, if found else return 0 if not found.
+
+getSecondHighestPrice in the Solution class. This method will take array of Mobile objects and returns the Mobile object having the second highest price if price is 
+odd. if found else return null if not found.
+
+This method should be called from main method.
+Write code to perform following tasks:
+1. Take necessary input variable and call countMobileByBrand. For this method- The main method should print the number for given brand. As if the returned value is not
+0, or it should print "No Such Mobile Found ".
+
+2. Take necessary input variable and call getSecondHighestPrice. For this method- The main method should print the all details of returned mobile object as is if the 
+returned value is not null, or it should print "No such mobile found”.
+
+Note- All the searches should be case insensitive. Before calling these static methods in main, use Scanner object to read the values of four Phone objects referring
+attributes in the above mentioned attribute sequence. Next, read the value for brand.
+
+
+Consider below sample input and output to test your code.	
+
+Input 
+111
+Iphone x
+40000
+Apple
+222
+Narzo 
+19999
+Realme
+333
+Note 10
+20000
+Redmi
+444
+Galaxy A52
+27499
+Samsung
+Realme
+
+Output
+1
+222
+Narzo 
+19999
+Realme
