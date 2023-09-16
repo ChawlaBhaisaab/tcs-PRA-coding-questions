@@ -1,0 +1,74 @@
+import java.util.*;
+public class Student {
+private int id;
+private String name;
+private int marks;
+private int age;
+
+public int getid() {return id;}
+public String getname() {return name;}
+public int getmarks() {return marks;}
+public int getage() {return age;}
+
+Student(int id,String name,int marks,int age){
+	this.id=id;
+	this.name=name;
+	this.marks=marks;
+	this.age=age;
+
+}
+
+}
+public class Solution {
+public static void main(String args[]) {
+	Scanner sc=new Scanner(System.in);
+	int a=sc.nextInt();
+	Student[] arr=new Student[a];
+	for(int i=0;i<arr.length;i++) {
+		int id=sc.nextInt();
+		sc.nextLine();
+		String name=sc.nextLine();
+		int marks=sc.nextInt();
+		int age=sc.nextInt();
+		arr[i]=new Student(id,name,marks,age);
+	}
+	int b=sc.nextInt();
+	Student ans=findStudentWithMaximumAge(arr);
+	System.out.println("id-"+ans.getid());
+	System.out.println("name-"+ans.getname());
+	System.out.println("marks-"+ans.getmarks());
+	System.out.println("age-"+ans.getage());
+	Student ans1=searchStudentById(arr,b);
+	if(ans1==null) {
+		System.out.println("No Student found with mentioned attribute");
+	}
+	else {
+		System.out.println("id-"+ans1.getid());
+		System.out.println("name-"+ans1.getname());
+		System.out.println("marks-"+ans1.getmarks());
+		System.out.println("age-"+ans1.getage());
+	}
+	
+}
+public static Student findStudentWithMaximumAge(Student[] arr) {
+	Student m=null;
+	int max=Integer.MIN_VALUE;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getage()>max) {
+			max=arr[i].getage();
+			m=arr[i];
+		}
+	}
+	return m;
+}
+
+public static Student searchStudentById(Student [] arr, int b) {
+	Student m=null;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getid()== b) {
+			m=arr[i];
+		}
+	}
+	return m;
+}
+}
