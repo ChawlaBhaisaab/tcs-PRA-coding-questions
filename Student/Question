@@ -1,0 +1,57 @@
+Create the class Student with below attributes.
+id-int
+name-String
+marks-int
+age-int
+
+write getters and setters and parametrized constructor in Student class.
+
+Create class Solution with main method.
+implement 2 static methods-findStudentWithMaximumAge and searchStudentById in Solution class.
+
+findStudentWithMaximumAge method:
+This method will take the Array of the Students objects as input and returns the Student object having maximum Age.
+For this method,the main method should print the student object details with maximum age as it is.   
+
+searchStudentById method:
+This method will take 2 input parameters.Array of the Students objects and an int value  id.and returns the Student object having the mentioned id if found, else 
+return null if not found.
+For this method ,main method should print the details of Student objects as it is,if the returned value is not null. or it should print "No Student found with 
+mentioned attribute." if the returned value is null.
+
+
+These 2 methods should be called from main method.
+
+*************************************************************************************************
+
+sample input1:
+
+4
+100
+jisha
+35
+23
+104
+Uma
+30
+45
+105
+Eva 
+36
+21
+102
+Cissy
+24
+51
+100
+
+Sample output1:
+
+id-102
+name-Cissy
+marks-24
+age-51
+id-100
+name-jisha
+marks-35
+age-23
