@@ -1,0 +1,80 @@
+Create the class Bank with below Attributes.
+bankId-int
+bankName-String
+numberOfCustomers-int
+city-String 
+
+write parametrized constructor as well in Bank Class.
+Create class Solution  with main method.
+Implement 2 Static methods-findAvgNumberOfCustomersByCity and getSecondLowestNumberOfCustomersBank in Solution class.
+
+
+findAvgNumberOfCustomersByCity method-This method will take two input parameters.Array of Bank Objects and String Parameter city and will return the average number 
+of customers of bank from array of Bank Objects for the given city.
+If no banks with given city present inside the array of the Bank Objects, then the method should return 0.
+
+The main method should print the average of the number of Customers if the returned value is greater than 0.Else main method will print "Bank not Found".
+
+
+getSecondLowestNumberOfCustomersBank method- This method will take 1 input Parameter that is Array of Bank Objects and return Bank Object having the second lowest 
+Number of Customers among the Bank Objects only if the number Of Customers in that Bank is an even number.
+If no bank with above condition is present in the array of Bank Objects,then the method should return null.
+
+The main method should print bankId,bankName,numberOfCustomers and city from the returned bank Object if the returned value is not null.else the main method method 
+will print "Bank not Found".
+************************************************************************************************
+
+Input1:
+
+42
+ABC
+400
+Chennai
+32
+PNG
+360
+Amritsar
+25
+Canara
+200
+Chennai
+16
+RBS
+370
+Mumbai
+Chennai
+
+
+
+output1:
+300
+32
+PNG
+360
+Amritsar
+
+Input2:
+42
+ABC
+400
+Chennai
+34
+HDFC
+495
+Ahmedabad
+29
+ICICI
+205
+Kochi
+17
+RBS
+175
+Pune
+Delhi
+
+
+
+output2:
+
+Bank not Found.
+Bank not Found.
