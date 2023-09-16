@@ -1,0 +1,82 @@
+import java.util.*;
+public class Mobile {
+private int mobileId;
+private String modelName;
+private int price;
+private String brand;
+
+public int getmobileId() {return mobileId;}
+public String getmodelName() {return modelName;}
+public int getprice() {return price;}
+public String getbrand() {return brand;}
+
+Mobile(int mobileId,String modelName,int price,String brand){
+	this.mobileId=mobileId;
+	this.modelName=modelName;
+	this.price=price;
+	this.brand=brand;
+	
+}
+}
+public class Solution {
+public static void main(String args[]) {
+	Scanner sc=new Scanner(System.in);
+	Mobile[] arr=new Mobile[4];
+	for (int i=0;i<arr.length;i++) {
+		int mobileId=sc.nextInt();
+		sc.nextLine();
+		String modelName=sc.nextLine();
+		int price=sc.nextInt();
+		sc.nextLine();
+		String brand=sc.nextLine();
+		arr[i]=new Mobile(mobileId,modelName,price,brand);
+	}
+	String a=sc.nextLine();
+	int ans=countMobileByBrand(arr,a);
+	if(ans==0) {
+		System.out.println("No Such Mobile Found");
+	}
+	else {
+		System.out.println(ans);
+	}
+	
+	Mobile ans1=getSecondHighestPrice(arr);
+	if(ans1==null) {
+		System.out.println("No such mobile found");
+	}
+	else {
+		System.out.println(ans1.getmobileId());
+		System.out.println(ans1.getmodelName());
+		System.out.println(ans1.getprice());
+		System.out.println(ans1.getbrand());
+	}
+}
+
+public static int countMobileByBrand(Mobile[] arr,String a) {
+	int count=0;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getbrand().equalsIgnoreCase(a)) {
+			count+=1;
+		}
+	}
+	return count;
+}
+
+public static Mobile getSecondHighestPrice(Mobile[] arr) {
+	int max=Integer.MIN_VALUE;
+	Mobile m=null;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getprice()>max && arr[i].getprice()%2!=0) {
+			max=arr[i].getprice();
+		}
+	}
+	int smax=Integer.MIN_VALUE;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getprice()>smax && arr[i].getprice()%2!=0 && arr[i].getprice()<max) {
+			smax=arr[i].getprice();
+			m=arr[i];
+		}
+	}
+	return m;
+}
+}
