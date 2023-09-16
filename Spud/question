@@ -1,0 +1,58 @@
+ Create a class Spud with below attributes
+int marketId
+String spudType
+String producingState
+int price(per kg)
+Write getters, setters and parameterized constructor in the above mentioned attribute sequence as required.
+
+Create class Solution with main method
+Implement two static methods in Solution class-
+findTypeByState 
+sortByPrice
+
+findTypeByState in the solution class. This method will take array of Spud objects, String state and returns spud type if found. If the state of any object matches 
+with String state, if found else return null if not found.
+
+sortByPrice in the Solution class. This method will take array of Spud objects and int pirce and returns the array of Spud object is ascending order of their price 
+which are less than Spud price input. If found else return null if not found.
+
+This method should be called from main method.
+Write code to perform following tasks:
+1. Take necessary input variable and call findTypeByState . For this method- The main method should print the spudType from return object. As if the returned value is 
+not null, or it should print "State not found."
+
+2. Take necessary input variable and call sortByPrice. For this method- The main method should print the spudType and price from return object. As it is if the 
+returned value is not null, or it should print "No Spud found.”
+
+Before calling these static methods in main, use Scanner object to read the values of four spuds objects referring attributes in the above mentioned
+Attribute sequence.
+Next read the value for string parameter and int parameter.
+
+Consider below sample input and output to test your code.	
+
+Input 
+121
+Kufri Jyoti
+Bengal
+70
+321
+Bhura Aloo
+Uttar Pradesh
+55
+621
+Rosetta
+Karnataka
+40
+921
+Kufri Chipsona
+Maharastra
+90
+Karnataka
+60
+
+Output
+Rosetta
+Rosetta
+40
+Bhura Aloo
+55
