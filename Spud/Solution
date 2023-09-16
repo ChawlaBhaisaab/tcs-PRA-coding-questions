@@ -1,0 +1,88 @@
+import java.util.*;
+public class Spud {
+private int marketId;
+private String spudType;
+private String producingState;
+private int price;
+
+public int getmarketId() {return marketId;}
+public String getspudType() {return spudType;}
+public String getproducingState() {return producingState;}
+public int getprice() {return price;}
+
+Spud(int marketId,String spudType,String producingState,int price){
+	this.marketId=marketId;
+	this.spudType=spudType;
+	this.producingState=producingState;
+	this.price=price;
+}
+
+}
+public class Solution {
+public static void main(String args[]) {
+	Scanner sc=new Scanner(System.in);
+	Spud[] arr=new Spud[4];
+	for(int i=0;i<arr.length;i++) {
+		int marketId=sc.nextInt();
+		sc.nextLine();
+		String spudType=sc.nextLine();
+		String producingState=sc.nextLine();
+		int price=sc.nextInt();
+		arr[i]=new Spud(marketId,spudType,producingState,price);
+	}
+	sc.nextLine();
+	String a=sc.nextLine();
+	int b=sc.nextInt();
+	
+	String ans=findTypeByState(arr,a);
+	if(ans==null) {
+		System.out.println("State not found");
+	}
+	else {
+		System.out.println(ans);
+	}
+	
+	Spud[] ans1=sortByPrice(arr,b);
+	if(ans1==null) {
+		System.out.println("No Spud found");
+	}
+	else {
+	for(int i=0;i<ans1.length;i++) {
+		System.out.println(ans1[i].getspudType());
+		System.out.println(ans1[i].getprice());
+	}
+	}
+	
+}
+
+public static String findTypeByState(Spud [] arr,String a) {
+	String c=null;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getproducingState().equalsIgnoreCase(a)) {
+			c=arr[i].getspudType();
+		}
+	}
+	return c;
+}
+
+public static Spud[] sortByPrice(Spud[] arr,int b) {
+	Spud[] res=new Spud[0];
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getprice()<b) {
+			res=Arrays.copyOf(res, res.length+1);
+			res[res.length-1]=arr[i];
+		}
+	}
+	for(int i=0;i<res.length-1;i++) {
+		for(int j=0;j<res.length-i-1;j++) {
+			if(res[j].getprice()>res[j+1].getprice()) {
+				Spud temp=res[j];
+				res[j]=res[j+1];
+				res[j+1]=temp;
+			}
+		}
+	}
+	if(res.length == 0) {return null;}
+	else {return res;}
+}
+}
