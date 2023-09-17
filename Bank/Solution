@@ -1,0 +1,19 @@
+public class Bank {
+private int bankId;
+private String bankName;
+private int numberOfCustomers;
+private String city;
+
+public int getbankId() {return bankId;}
+public String getbankName(){return bankName;}
+public int getnumberOfCustomers() {return numberOfCustomers;}
+public String getcity() {return city;}
+
+Bank(int bankId,String bankName,int numberOfCustomers,String city){
+	this.bankId=bankId;
+	this.bankName=bankName;
+	this.numberOfCustomers=numberOfCustomers;
+	this.city=city;
+}
+
+}
