@@ -1,0 +1,99 @@
+import java.util.*;
+public class Antenna {
+	private int antennaid;
+	private String antennaName;
+	private String projectLead;
+	private double antennaVSWR;
+
+    Antenna(int antennaid,String antennaName,String projectLead,double antennaVSWR){
+        this.antennaid=antennaid;
+        this.antennaName=antennaName;
+        this.projectLead=projectLead;
+        this.antennaVSWR=antennaVSWR;
+    }
+    
+    public int getantennaid() {return antennaid;}
+    public String getantennaName() {return antennaName;}
+    public String getprojectLead() {return projectLead;}
+    public double getantennaVSWR() {return antennaVSWR;}
+    
+}
+public class Solution {
+	public static void main(String[] args)throws java.lang.Exception{
+        Antenna[] ante = new Antenna[4];
+        Scanner sc = new Scanner(System.in);
+        for(int i=0;i<ante.length;i++){
+           int a=sc.nextInt();
+           sc.nextLine();
+           String b=sc.nextLine();
+           String c=sc.nextLine();
+           double d=sc.nextDouble();
+           sc.nextLine();
+           ante[i]= new Antenna(a,b,c,d);
+        }
+        String name = sc.nextLine();
+        double VSWR = sc.nextDouble();
+        sc.nextLine();
+        
+        int ans = searchAntennaByName(ante,name);
+        if(ans==0){
+            System.out.println("There is no antenna with the given parameter.");
+        }
+        else{
+            System.out.println(ans);
+        }
+        
+        Antenna[] ans2 = sortAntennaByVSWR(ante,VSWR);
+        if(ans2==null){
+            System.out.println("No Antenna found");
+        }
+        else{
+
+            for (int i = 0; i <ans2.length ; i++) {
+                System.out.println(ans2[i].getprojectLead());
+            }
+        }
+
+    }
+
+    public static int searchAntennaByName(Antenna[] ante, String name){
+        for(int i=0;i<ante.length;i++){
+            if(ante[i].getantennaName().equalsIgnoreCase(name)){
+                return ante[i].getantennaid();
+            }
+        }
+
+        return 0;
+    }
+    
+public  static Antenna[] sortAntennaByVSWR(Antenna[] antennas,double inputAntennaVSWR)
+{
+   Antenna[] help=new Antenna[0];
+    for (int i = 0; i <antennas.length ; i++) {
+        if(antennas[i].getantennaVSWR()<inputAntennaVSWR)
+        {
+            help=Arrays.copyOf(help,help.length+1);
+            help[help.length-1]=antennas[i];
+        }
+    }
+for (int i = 0; i < help.length-1; i++) {
+        for (int j = 0; j <help.length-i-1 ; j++) {
+            if(help[j].getantennaVSWR()>help[j+1].getantennaVSWR())
+            {
+               Antenna temp=help[j];
+               help[j]=help[j+1];
+               help[j+1]=temp;
+            }
+        }
+    }
+    if(help.length==0)
+    {
+        return  null;
+    }
+   else
+    {
+        return help;
+    }
+
+}
+}
