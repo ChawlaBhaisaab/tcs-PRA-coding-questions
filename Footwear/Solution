@@ -1,0 +1,132 @@
+import java.util.*;
+public class Footwear {
+	    int footwearId;
+	    String footwearName;
+	    String footwearType;
+	    int price;
+
+	    public Footwear(int footwearId, String footwearName, String footwearType, int price) {
+	        this.footwearId = footwearId;
+	        this.footwearName = footwearName;
+	        this.footwearType = footwearType;
+	        this.price = price;
+	    }
+
+
+	    public int getFootwearId() {
+	        return footwearId;
+	    }
+
+	    public void setFootwearId(int footwearId) {
+	        this.footwearId = footwearId;
+	    }
+
+	    public String getFootwearName() {
+	        return footwearName;
+	    }
+
+	    public void setFootwearName(String footwearName) {
+	        this.footwearName = footwearName;
+	    }
+
+	    public String getFootwearType() {
+	        return footwearType;
+	    }
+
+	    public void setFootwearType(String footwearType) {
+	        this.footwearType = footwearType;
+	    }
+
+	    public int getPrice() {
+	        return price;
+	    }
+
+	    public void setPrice(int price) {
+	        this.price = price;
+	    }
+}
+public class Solution {
+	public static void main(String[] args) {
+        Footwear[] footwears=new Footwear[5];
+        Scanner sc=new Scanner(System.in);
+        for (int i = 0; i < footwears.length; i++) {
+        int a=sc.nextInt();
+        sc.nextLine();
+        String b=sc.nextLine();
+        String c=sc.nextLine();
+        int d=sc.nextInt();
+        sc.nextLine();
+        footwears[i]=new Footwear(a,b,c,d);
+        }
+        String inputFootwearType=sc.nextLine();
+        String inputFootwearBrand=sc.nextLine();
+        int count   =getCountByType(footwears,inputFootwearType);
+         if(count==0)
+         {
+             System.out.println("Footwear not available");
+         }
+         else
+         {
+             System.out.println(count);
+         }
+
+        Footwear obj=getSecondHighestPriceByBrand(footwears,inputFootwearBrand);
+          if(obj==null)
+          {
+              System.out.println("Brand not available");
+          }
+          else
+          {
+              System.out.println(obj.getFootwearId());
+              System.out.println(obj.getFootwearName());
+              System.out.println(obj.getPrice());
+          }
+
+
+    }
+
+private static Footwear getSecondHighestPriceByBrand(Footwear[] footwears, String inputFootwearBrand) {
+        Footwear m=null;
+        int max=Integer.MIN_VALUE;
+        
+        for (int i = 0; i <footwears.length; i++) {
+            if(footwears[i].getFootwearName().equalsIgnoreCase(inputFootwearBrand))
+            {
+                if(max<footwears[i].getPrice()) {
+                	max=footwears[i].getPrice();
+                }
+            }
+        }
+        int smax=Integer.MIN_VALUE;
+        for (int i = 0; i <footwears.length; i++) {
+            if(footwears[i].getFootwearName().equalsIgnoreCase(inputFootwearBrand))
+            {
+                if(smax<footwears[i].getPrice() && max>footwears[i].getPrice()) {
+                	smax=footwears[i].getPrice();
+                	m=footwears[i];
+                }
+            }
+        }
+        return m;
+    }
+
+
+public static int  getCountByType(Footwear[] footwears,String type)
+   {
+       int count=0;
+       for (int i = 0; i < footwears.length; i++) {
+           if(footwears[i].footwearType.equalsIgnoreCase(type))
+           {
+               count+=1;
+           }
+       }
+       if(count>0)
+       {
+           return count;
+       }
+
+
+       return 0;
+   }
+
+}
