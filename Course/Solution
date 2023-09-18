@@ -1,0 +1,112 @@
+import java.util.*;
+public class Course {
+	private int courseId;
+	private String courseName;
+	private String courseAdmin;
+	private int quiz;
+	private int handsOn;
+
+  Course(int courseId, String courseName, String courseAdmin, int quiz, int handsOn) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.courseAdmin = courseAdmin;
+        this.quiz = quiz;
+        this.handsOn = handsOn;
+        
+  }
+  
+  public int getcourseId() {return courseId;}
+  public String getcourseName() {return courseName;}
+  public String getcourseAdmin() {return courseAdmin;}
+  public int getquiz() {return quiz;}
+  public int gethandsOn() {return handsOn;}
+}
+public class Solution {
+	 public static void main(String[] args) {
+            Course[] courses=new Course[4];
+	        Scanner sc=new Scanner(System.in);
+            for (int i = 0; i < courses.length; i++) {
+	          int a=sc.nextInt();
+	          sc.nextLine();
+	          String b=sc.nextLine();
+	          String c=sc.nextLine();
+	          int d=sc.nextInt();
+	          int e=sc.nextInt();
+	          courses[i]=new Course(a,b,c,d,e);
+	        }
+            sc.nextLine();
+	        String input1=sc.nextLine();
+	        int input2=sc.nextInt();
+
+	        int  ans1 = findAvgOfQuizByAdmin(courses, input1);
+	        if(ans1>0)
+	        {
+	            System.out.println(ans1);
+	        }
+	        else
+	        {
+	            System.out.println("No Course found.");
+	        }
+
+	      Course[] ans2= sortCourseByHandsOn(courses,input2);
+	    if(ans2==null)
+	    {
+	        System.out.println("No Course found with mentioned attribute.");
+	    }
+	    else
+	    {
+	        for (int i = 0; i <ans2.length ; i++) {
+	            System.out.println(ans2[i].getcourseName());
+	        }
+	    }
+	    }
+public  static  int findAvgOfQuizByAdmin(Course[] courses,String input1)
+	    {
+	        int sum=0;
+	        int count=0;
+	        for (int i = 0; i <courses.length ; i++) {
+	            if(courses[i].getcourseAdmin().equalsIgnoreCase(input1))
+	            {
+	                sum=sum+courses[i].getquiz();
+	                count=count+1;
+	            }
+
+	        }
+	        if(sum>0)
+	        {
+	            return sum/count;
+	        }
+
+            return 0;
+	    }
+public  static  Course[] sortCourseByHandsOn(Course[] courses,int input2)
+	    {
+	        Course[] help=new Course[0];
+	        for (int i = 0; i <courses.length ; i++) {
+	            if(courses[i].gethandsOn()<input2)
+	            {
+	                help= Arrays.copyOf(help,help.length+1);
+	                help[help.length-1]=courses[i];
+	            }
+	        }
+
+	        for (int i = 0; i <help.length-1 ; i++) {
+	            for (int j = 0; j <help.length-i-1 ; j++) {
+	                if(help[j].gethandsOn()>help[j+1].gethandsOn())
+	                {
+	                    Course temp=help[j];
+	                    help[j]=help[j+1];
+	                    help[j+1]=temp;
+
+	                }
+	            }
+
+	        }
+
+	        if(help.length>0)
+	        {
+	            return help;
+	        }
+	        return null;
+	    }
+    }
