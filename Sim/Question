@@ -58,3 +58,39 @@ Output:
 4 shubham kol 3.21
 2 sachin kol 2.26
 5 kalpesh kol 1.8
+
+
+input:
+1
+raj
+100
+1.5
+KOL
+2
+chetan
+200
+1.6
+KOL
+3
+asha
+150
+1.7
+MUM
+4
+kiran
+50
+2.2
+KOL
+5
+vijay
+130
+1.8
+KOL
+KOL
+AHD
+
+outpot
+4 kiran AHD 2.2
+5 vijay AHD 1.8
+2 chetan AHD 1.6
+1 raj AHD 1.5
