@@ -1,0 +1,76 @@
+import java.util.*;
+public class RRT {
+	private int ticketNo;
+    private String raisedBy;
+    private String assignedTo;
+    private int priority;
+    private String project;
+
+    public RRT(int ticketNo, String raisedBy, String assignedTo, int priority, String project) {
+        this.ticketNo = ticketNo;
+        this.raisedBy = raisedBy;
+        this.assignedTo = assignedTo;
+        this.priority = priority;
+        this.project = project;
+    }
+
+    public int getTicketNo() {
+        return ticketNo;
+    }
+    public String getRaisedBy() {
+        return raisedBy;
+    }
+    public String getAssignedTo() {
+        return assignedTo;
+    }
+    public int getPriority() {
+        return priority;
+    }
+    public String getProject() {
+        return project;
+    }    
+ }
+public class Solution {
+	 public static void main(String[] args) {
+	      Scanner sc=new Scanner(System.in);
+	     RRT[] rrts=new RRT[4];
+	        for (int i = 0; i <rrts.length ; i++) {
+	        int a=sc.nextInt();
+	        sc.nextLine();
+	        String b=sc.nextLine();
+	        String c=sc.nextLine();
+	        int d=sc.nextInt();
+	        sc.nextLine();
+	        String e=sc.nextLine();
+	       rrts[i] =new RRT(a,b,c,d,e);
+	        }
+	       String  input=sc.nextLine();
+	       RRT ans=getHighestPriorityTicket(rrts,input);
+	       if(ans==null)
+	       {
+	           System.out.println("No such Ticket");
+	       }
+	       else {
+	           System.out.println(ans.getTicketNo());
+	           System.out.println(ans.getRaisedBy());
+	           System.out.println(ans.getAssignedTo());
+	       }
+
+	    }
+	   public static RRT getHighestPriorityTicket(RRT[] rrts,String input)
+	    {
+	       RRT x=null;
+	       int pr=Integer.MAX_VALUE;
+	        for (int i = 0; i < rrts.length; i++) {
+	            if(rrts[i].getProject().equalsIgnoreCase(input))
+	            {
+	              if(rrts[i].getPriority()<pr)
+	              {	                  
+	                  pr=rrts[i].getPriority();
+	                  x=rrts[i];
+	              }
+	            }
+	        }	       
+	       return x;
+	    }
+}
