@@ -27,35 +27,34 @@ Consider below sample input and output:
 Input:
 
 1
-raj
-100
-1.5
-KOL
-2
-chetan
-200
-1.6
-KOL
-3
-asha
-150
-1.7
-MUM
-4
-kiran
-50
-2.2
-KOL
-5
-vijay
+raju
 130
+1.32
+mum
+2
+sachin
+120
+2.26
+ahd
+3
+ram
+200
+2.54
+kol
+4
+shubham
+640
+3.21
+ahd
+5
+kalpesh
+150
 1.8
-KOL
-AHD
-KOL
+ahd
+ahd
+kol
 
 Output:
-4 kiran KOL 2.2
-5 vijay KOL 1.8
-2 chetan KOL 1.6
-
+4 shubham kol 3.21
+2 sachin kol 2.26
+5 kalpesh kol 1.8
