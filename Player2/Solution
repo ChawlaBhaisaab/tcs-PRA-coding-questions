@@ -1,0 +1,63 @@
+import java.util.*;
+public class Player2 {
+	private int playerId;
+	private String skill;
+	private String level;
+	private int points;
+	
+	public int getplayerId() {return playerId;}
+	public String getskill() {return skill;}
+	public String getlevel() {return level;}
+	public int getpoints() {return points;}
+	
+	public Player2(int playerId,String skill,String level, int points) {
+		this.playerId=playerId;
+		this.skill=skill;
+		this.level=level;
+		this.points=points;
+	}
+	
+
+}
+public class Solution {
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		Player2[] arr= new Player2[4];
+		for(int i=0;i<arr.length;i++) {
+			int playerId=sc.nextInt();
+			sc.nextLine();
+			String skill=sc.nextLine();
+			String level=sc.nextLine();
+			int points=sc.nextInt();
+			sc.nextLine();
+			arr[i]=new Player2(playerId,skill,level,points);
+		}
+		String a=sc.nextLine();
+		String c=sc.nextLine();
+		sc.close();
+		int ans=findPointsForGivenSkill(arr,a);
+		if(ans==0) {System.out.println("The given Skill is not available");}
+		else {System.out.println(ans);}
+		Player2 ans1= getPlayerBasedOnLevel(arr,a,c);
+		if(ans1==null) {System.out.println("No player is available with specified level, skill and eligibility points");}
+		else {System.out.println(ans1.getplayerId());}
+	}
+	public static int findPointsForGivenSkill(Player2[] arr,String a) {
+		int sum=0;
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i].getskill().equals(a)) {
+				sum+=arr[i].getpoints();
+			}
+		}
+		if(sum==0) {return 0;}
+		else {return sum;}
+	}
+	public static Player2 getPlayerBasedOnLevel(Player2[] arr, String a,String c) {
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i].getskill().equals(a) && arr[i].getlevel().equals(c) && arr[i].getpoints()>=20) {
+				return arr[i];
+			}
+		}
+		return null;
+	}
+}
