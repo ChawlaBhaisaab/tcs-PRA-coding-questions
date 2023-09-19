@@ -1,0 +1,84 @@
+import java.util.*;
+public class NavalVessel {
+	private int vesselId;
+	private String vesselName;
+	private int noOfVoyagesPlanned;
+	private int noOfVoyagesCompleted;
+	private String purpose;
+	private String classification;
+	
+	public NavalVessel(int vesselId,String vesselName,int noOfVoyagesPlanned, int noOfVoyagesCompleted,String purpose) {
+		this.vesselId=vesselId;
+		this.vesselName=vesselName;
+		this.noOfVoyagesPlanned=noOfVoyagesPlanned;
+		this.noOfVoyagesCompleted=noOfVoyagesCompleted;
+		this.purpose=purpose;
+	}
+	
+	public int getnoOfVoyagesPlanned() {return noOfVoyagesPlanned;}
+	public int getnoOfVoyagesCompleted() {return noOfVoyagesCompleted;}
+	public String getpurpose() {return purpose;}
+	public String getclassification() {return classification;}
+	public String getvesselName() {return vesselName;}
+	public int getvesselId() {return vesselId;}
+	
+	public void setclassification(String classification) {
+		this.classification=classification;
+	}
+	public void setnoOfVoyagesPlanned(int noOfVoyagesPlanned) {
+		this.noOfVoyagesPlanned=noOfVoyagesPlanned;
+	}
+}
+public class Solution {
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		NavalVessel[] arr= new NavalVessel[4];
+		for(int i=0;i<arr.length;i++) {
+			int vesselId=sc.nextInt();
+			sc.nextLine();
+			String vesselName=sc.nextLine();
+			int noOfVoyagesPlanned=sc.nextInt();
+			int noOfVoyagesCompleted=sc.nextInt();
+			sc.nextLine();
+			String purpose=sc.nextLine();
+			arr[i]=new NavalVessel(vesselId,vesselName,noOfVoyagesPlanned,noOfVoyagesCompleted,purpose);
+		}
+		int a=sc.nextInt();
+		sc.nextLine();
+		String b=sc.nextLine();
+		sc.close();
+		int ans=findAvgVoyagesByPct(arr,a);
+		if(ans==0) {System.out.println("not available");}
+		else {System.out.println(ans);}
+		NavalVessel ans1=findVesselByGrade(arr,b);
+		if(ans1==null) {System.out.println("No Naval Vessel is available with the specified purpose");}
+		else {System.out.println(ans1.getvesselName()+"%"+ans1.getclassification());}
+	}
+public static int findAvgVoyagesByPct(NavalVessel[] arr, int a) {
+	int sum=0;
+	int count =0;
+	for(int i=0;i<arr.length;i++) {
+		int percent=(arr[i].getnoOfVoyagesCompleted() * 100)/arr[i].getnoOfVoyagesPlanned();
+		if(percent>=a) {
+			sum+=arr[i].getnoOfVoyagesCompleted();
+			count++;
+		}
+	}
+	int res=sum/count;
+	if(res==0) {return 0;}
+	else {return res;}
+}
+public static NavalVessel findVesselByGrade(NavalVessel[] arr,String b) {
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getpurpose().equals(b)) {
+			int percent=(arr[i].getnoOfVoyagesCompleted() * 100)/arr[i].getnoOfVoyagesPlanned();
+			if(percent==100) {arr[i].setclassification("Star");}
+			else if(percent<=99 && percent>=80) {arr[i].setclassification("Leader");}
+			else if(percent<=79 && percent>=55) {arr[i].setclassification("Inspirer");}
+			else{arr[i].setclassification("Striver");}
+			return arr[i];
+		}	
+	}
+	return null;
+}
+}
