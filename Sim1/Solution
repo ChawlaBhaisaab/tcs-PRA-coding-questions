@@ -1,0 +1,22 @@
+public class Sim1 {
+	private int id;
+	private String company;
+	private int balance;
+	private double ratePerSecond;
+	private String circle;
+	
+	public int getid() {return id;}
+	public String getcompany() {return company;}
+	public int getbalance() {return balance;}
+	public double getratePerSecond() {return ratePerSecond;}
+	public String getcircle() {return circle;}
+	
+	public Sim1(int id,String company,int balance,double ratePerSecond,String circle) {
+		this.id=id;
+		this.company=company;
+		this.balance=balance;
+		this.ratePerSecond=ratePerSecond;
+		this.circle=circle;	
+	}
+	
+}
