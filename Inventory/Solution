@@ -1,0 +1,53 @@
+import java.util.*;
+public class Inventory {
+	private String inventoryId;
+	private int maximumQuantity;
+	private int currentQuantity;
+	private int threshold;
+	
+	public String getinventoryId() {return inventoryId;}
+	public int getmaximumquantity() {return maximumQuantity;}
+	public int getcurrentQuantity(){return currentQuantity;}
+	public int getthreshold() {return threshold;}
+	
+	public Inventory(String inventoryId,int maximumQuantity,int currentQuantity,int threshold) {
+		this.inventoryId=inventoryId;
+		this.maximumQuantity=maximumQuantity;
+		this.currentQuantity=currentQuantity;
+		this.threshold=threshold;
+	}
+}
+public class Solution {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		Inventory[] arr= new Inventory[4];
+		for(int i=0;i<arr.length;i++) {
+			String inventoryId=sc.nextLine();
+			int maximumQuantity=sc.nextInt();
+	        int currentQuantity=sc.nextInt();
+			int threshold=sc.nextInt();
+			sc.nextLine();
+			arr[i]=new Inventory(inventoryId,maximumQuantity,currentQuantity,threshold);
+		}
+		int a=sc.nextInt();
+		sc.close();
+		Inventory[] ans=replenish(arr,a);
+		for(int i=0;i<ans.length;i++) {
+			if(ans[i].getthreshold()>75) {System.out.println(ans[i].getinventoryId()+" Critical Filling");}
+			else if(ans[i].getthreshold()>50 && ans[i].getthreshold()<75) {System.out.println(ans[i].getinventoryId()+" Moderate Filling");}
+			else {System.out.println(ans[i].getinventoryId()+" Non-Critical Filling");}
+			
+		}
+
+	}
+	public static Inventory[] replenish(Inventory[] arr, int a) {
+		Inventory[] res=new Inventory[0];
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i].getthreshold() <= a) {
+				res=Arrays.copyOf(res, res.length+1);
+				res[res.length-1]=arr[i];
+			}
+		}
+		return res;	
+	}
+}
