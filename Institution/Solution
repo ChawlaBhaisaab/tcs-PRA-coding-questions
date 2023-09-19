@@ -1,0 +1,75 @@
+import java.util.*;
+public class Institution {
+	private int institutionId;
+	private String institutionName;
+	private String noOfStudentsPlaced;
+	private int noOfStudentsCleared;
+	private String location;
+	private String grade;
+	
+	public int getinstitutionId() {return institutionId;}
+	public String getinstitutionName() {return institutionName;}
+	public String getnoOfStudentsPlaced() {return noOfStudentsPlaced;}
+	public int getnoOfStudentsCleared() {return noOfStudentsCleared;}
+	public String getlocation() {return location;}
+	public String getgrade() {return grade;}
+	public void setgrade(String grade) {this.grade=grade;}
+	
+	public Institution(int institutionId,String institutionName,String noOfStudentsPlaced, int noOfStudentsCleared,String location) {
+		this.institutionId=institutionId;
+		this.institutionName=institutionName;
+		this.noOfStudentsPlaced=noOfStudentsPlaced;
+		this.noOfStudentsCleared=noOfStudentsCleared;
+		this.location=location;
+		
+		
+	}
+}
+public class Solution {
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		Institution [] arr= new Institution[4];
+		for(int i=0;i<arr.length;i++) {
+			int institutionId=sc.nextInt();
+			sc.nextLine();
+			String institutionName=sc.nextLine();
+			String noOfStudentsPlaced=sc.nextLine();
+			int noOfStudentsCleared=sc.nextInt();
+			sc.nextLine();
+			String location =sc.nextLine();
+			arr[i]=new Institution(institutionId, institutionName, noOfStudentsPlaced,noOfStudentsCleared,location);	
+		}
+		String a=sc.nextLine();
+		String b=sc.nextLine();
+		sc.close();
+		int ans=findNumClearancedByLoc(arr,a);
+		if(ans==0) {System.out.println("There are no cleared students in this particular location");}
+		else {System.out.println(ans);}
+		Institution ans1=updateInstitutionGrade(arr,b);
+		if(ans1==null) {System.out.println("No Institute is available with the specified name");}
+		else {System.out.println(ans1.getinstitutionName()+"::"+ans1.getgrade());}
+	}
+public static int findNumClearancedByLoc(Institution[] arr, String a ) {
+	int sum=0;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getlocation().equalsIgnoreCase(a)) {
+			sum+=arr[i].getnoOfStudentsCleared();
+		}
+	}
+	if(sum==0) {return 0;}
+	else {return sum;}
+}
+public static Institution updateInstitutionGrade(Institution[] arr, String b) {
+	int rating=0;
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getinstitutionName().equalsIgnoreCase(b)) {
+		rating=(Integer.parseInt(arr[i].getnoOfStudentsPlaced()) * 100)/arr[i].getnoOfStudentsCleared();
+		if(rating >=80) {arr[i].setgrade("A");}
+		else {arr[i].setgrade("B");}
+		return arr[i];
+		}	
+	}
+	return null;
+	
+}
+}
