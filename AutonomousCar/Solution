@@ -1,0 +1,73 @@
+import java.util.*;
+public class AutonomousCar {
+	private int carId;
+	private String brand;
+	private int noOfTestsConducted;
+	private int noOfTestsPassed;
+	private String environment;
+	private String grade;
+	
+	public int getcarId() {return carId;}
+	public String getbrand() {return brand;}
+	public int getnoOfTestsConducted() {return noOfTestsConducted; }
+	public int getnoOfTestsPassed() {return noOfTestsPassed;}
+	public String getenvironment() {return environment;}
+	public String getgrade() {return grade;}
+	public void setgrade(String grade) {this.grade=grade;}
+	
+	public AutonomousCar(int carId,String brand,int noOfTestsConducted,int noOfTestsPassed,String environment) {
+		this.carId=carId;
+		this.brand=brand;
+		this.noOfTestsConducted=noOfTestsConducted;
+		this.noOfTestsPassed=noOfTestsPassed;
+		this.environment=environment;
+	}
+}
+public class Solution {
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		AutonomousCar[] arr= new AutonomousCar[4];
+		for(int i=0;i<arr.length;i++) {
+			int carId=sc.nextInt();
+			sc.nextLine();
+			String brand=sc.nextLine();
+			int noOfTestsConducted=sc.nextInt();
+			int noOfTestsPassed=sc.nextInt();
+			sc.nextLine();
+			String environment=sc.nextLine();
+			arr[i]=new AutonomousCar(carId,brand,noOfTestsConducted,noOfTestsPassed,environment);
+		}
+		String a=sc.nextLine();
+		String b=sc.nextLine();
+		sc.close();
+		int ans=findTestPassedByEnv(arr,a);
+		if(ans==0) {System.out.println("There are no tests passed in this particular environment");}
+		else {System.out.println(ans);}
+		AutonomousCar ans1=updateCarGrade(arr,b);
+		if(ans1==null) {System.out.println("No Car is available with the specified brand");}
+		else {System.out.println(ans1.getbrand()+"::"+ans1.getgrade());}
+	}
+	public static int findTestPassedByEnv(AutonomousCar[] arr, String a) {
+		int sum=0;
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i].getenvironment().equals(a)) {
+				sum+=arr[i].getnoOfTestsPassed();
+				}
+		}
+		if(sum==0) {return 0;}
+		else {return sum;}
+	}
+	public static AutonomousCar updateCarGrade(AutonomousCar[] arr, String b) {
+		int rating=0;
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i].getbrand().equals(b)){
+				rating=(arr[i].getnoOfTestsPassed() * 100)/arr[i].getnoOfTestsConducted();
+				if(rating>=80) {arr[i].setgrade("A1");}
+				else {arr[i].setgrade("B2");}
+				return arr[i];
+			}
+		}
+		return null;
+		
+	}
+}
