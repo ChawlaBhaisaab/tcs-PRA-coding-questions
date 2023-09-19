@@ -1,0 +1,58 @@
+import java.util.*;
+public class Player1 {
+	private int id;
+	private String name;
+	private int iccRank;
+	private int matchesPlayed;
+	private int runsScored;
+	
+	public int getid() {return id;}
+	public String getname() {return name;}
+	public int geticcRank() {return iccRank;}
+	public int getmatchesPlayed() {return matchesPlayed;}
+	public int getrunsScored() {return runsScored;}
+	
+	public Player1(int id,String name, int iccRank,int matchesPlayed,int runsScored) {
+	this.id=id;
+	this.name=name;
+	this.iccRank=iccRank;
+	this.matchesPlayed=matchesPlayed;
+	this.runsScored=runsScored;
+	}
+}
+public class Solution {
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		Player1[] arr=new Player1[4];
+		for(int i=0;i<arr.length;i++) {
+			int id=sc.nextInt();
+			sc.nextLine();
+			String name=sc.nextLine();
+			int iccRank=sc.nextInt();
+			int matchesPlayed=sc.nextInt();
+			int runsScored=sc.nextInt();
+			sc.nextLine();
+			arr[i]=new Player1(id,name,iccRank,matchesPlayed,runsScored);
+		}
+		int a=sc.nextInt();
+		sc.close();
+		double[] ans=findAverageOfRuns(arr,a);
+		for(int i=0;i<ans.length;i++) {
+			if(ans[i]>=80 && ans[i]<=100) {System.out.println("Grade A");}
+			else if(ans[i]>=50 && ans[i]<=79) {System.out.println("Grade B");}
+			else{System.out.println("Grade C");}
+		}
+		
+	}
+public static double[] findAverageOfRuns(Player1[] arr,int a) {
+	double[] res=new double[0];
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i].getmatchesPlayed()>=a) {
+			res=Arrays.copyOf(res, res.length+1);
+			res[res.length-1]=(double)(arr[i].getrunsScored()/arr[i].getmatchesPlayed());
+		}
+	}
+	return res;
+}	
+	
+}
