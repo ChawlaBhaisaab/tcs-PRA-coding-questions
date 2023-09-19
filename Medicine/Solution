@@ -1,0 +1,53 @@
+import java.util.*;
+public class Medicine {
+	private String MedicineName;
+	private String batch;
+	private String disease;
+	private int price;
+	
+	public String getMedicineName() {return MedicineName;}
+	public String getbatch() {return batch;}
+	public String getdisease() {return disease;}
+	public int getprice() {return price;}
+	
+	public Medicine(String MedicineName, String batch,String disease,int price) {
+		this.MedicineName=MedicineName;
+		this.batch=batch;
+		this.disease=disease;
+		this.price=price;
+	}
+}
+public class Solution {
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		Medicine [] arr= new Medicine[4];
+		for(int i=0;i<arr.length;i++) {
+			String MedicineName=sc.nextLine();
+			String batch=sc.nextLine();
+			String disease=sc.nextLine();
+			int price=sc.nextInt();
+			sc.nextLine();
+			arr[i]=new Medicine(MedicineName,batch,disease,price);
+		}
+		String a=sc.nextLine();
+		sc.close();
+		Integer[] ans=getPriceByDisease(arr,a);
+		for(int i=0;i<ans.length;i++) {
+            System.out.println(ans[i]);
+        }
+		
+	}
+    public static Integer[] getPriceByDisease(Medicine[] arr, String a) {
+    	Integer [] res=new Integer[0];
+    	for(int i=0;i<arr.length;i++) {
+    		if(arr[i].getdisease().equalsIgnoreCase(a)) {
+    			res=Arrays.copyOf(res, res.length+1);
+    			res[res.length-1]=arr[i].getprice();	
+    	   }
+    	Arrays.sort(res);
+    		
+    	}
+    	return res;
+    	
+    }
+}
