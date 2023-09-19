@@ -1,0 +1,50 @@
+import java.util.*;
+public class Movie1 {
+	private String movieName;
+	private String company;
+	private String genre;
+	private int budget;
+	
+	public String getmovieName() {return movieName;}
+	public String getcompany() {return company;}
+	public String getgenre() {return genre;}
+	public int getbudget() {return budget;}
+	
+	public Movie1(String movieName,String company,String genre,int budget) {
+		this.movieName=movieName;
+		this.company=company;
+		this.genre=genre;
+		this.budget=budget;
+	}
+}
+public class Solution {
+	public static void main(String args[]) {
+		Scanner sc=new  Scanner(System.in);
+		Movie1[] arr= new Movie1[4];
+		for(int i=0;i<arr.length;i++) {
+			String movieName=sc.nextLine();
+			String company=sc.nextLine();
+			String genre=sc.nextLine();
+			int budget=sc.nextInt();
+			sc.nextLine();
+			arr[i]=new Movie1(movieName,company,genre,budget);
+		}
+		String a=sc.nextLine();
+		sc.close();
+		Movie1[] ans=getMovieByGenre(arr,a);
+		for(int i=0;i<ans.length;i++) {
+			if(ans[i].getbudget()>80000000) {System.out.println("High Budget Movie");}
+			else {System.out.println("Low Budget Movie");}
+		}
+	}
+public static Movie1[] getMovieByGenre(Movie1[] arr,String a) {
+	Movie1[] res=new Movie1[0];
+	for(int i =0;i<arr.length;i++) {
+		if(arr[i].getgenre().equalsIgnoreCase(a)) {
+			res=Arrays.copyOf(res, res.length+1);
+			res[res.length-1]=arr[i];	
+		}
+	}
+	return res;
+}
+}
