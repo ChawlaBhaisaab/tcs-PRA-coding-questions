@@ -1,0 +1,19 @@
+public class Movie {
+	private int movieId;
+	private String director;
+	private int rating;
+	private int budget;
+	
+	public int getmovieId() {return movieId;}
+	public String getdirector() {return director;}
+	public int getrating() {return rating;}
+	public int getbudget() {return budget;}
+	
+	public Movie(int movieId,String director,int rating , int budget) {
+		this.movieId=movieId;
+		this.director=director;
+		this.rating=rating;
+		this.budget=budget;
+	}
+
+}
